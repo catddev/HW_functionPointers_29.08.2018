@@ -85,7 +85,7 @@ void f3(int *&a, int &n, void(*f)(int*&, int&)) {
 	{
 		cout << a[i] << " ";
 	}
-	cout << endl;
+	cout << endl << endl;
 }
 int main()
 {
@@ -97,17 +97,11 @@ int main()
 
 	while (true)
 	{
-		cout << "Задача № ";
-		cin >> tn;
-
-		switch (tn)
-		{
-		case 1:
-		{
 			int *a;
 			int n = 10;
 			a = new int[n];
 
+			cout << "Дан массив чисел:" << endl;
 			for (int i = 0; i < n; i++)
 			{
 				a[i] = rand() % 100 - 20;
@@ -118,17 +112,14 @@ int main()
 			void(*f[3])(int *&, int&) = { arr_prime, arr_3, arr_even };
 
 			int choice;
+			cout << "Выберите функцию, которая выбирает из массива:" << endl << "0 (простые числа), 1 (кратные 3), 2 (четные)" << endl;
 			cin >> choice; // нельзя зациклить, т.к. каждую итерацию использует указатель на новый массив
 			// если же в f3 не передавать по ссылкеб возникнет конфликт
 
 			f3(a, n, *f[choice]);
 	
 			delete[] a;
-		}
-		break;
-		default:
-			cout << "нет такой задачи" << endl << endl;
-		}
+
 	}
 	system("pause");
 	return 0;
